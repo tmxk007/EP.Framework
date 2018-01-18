@@ -2,14 +2,19 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-import { Button, Select } from 'element-ui'
-Vue.use(Button)
-Vue.use(Select)
+import './assets/js/extends'
+import './assets/js/jslinq'
 
-Vue.config.productionTip = false
+import './components/index'
+
+window.$Linq = JSLINQ;
+window.Promise = Promise;
+
+Vue.config.productionTip = true;
+Vue.config.debug = true;
+Vue.prototype.$ELEMENT = { size: 'small' }
 
 new Vue({
   el: '#app',
-  router,
-  ...App
+  render: h => h(App)
 })
